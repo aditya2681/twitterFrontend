@@ -1,5 +1,6 @@
 import React ,{useState}from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 
 export default function Registration(){
@@ -18,8 +19,21 @@ export default function Registration(){
     }
     const forSubmit=(event)=>{
         console.log(firsrtName)
-        setSuccess(true)
+        const user = {
+            "emailId":emailId,
+            "firstName":firsrtName,
+             "lastName":lastName,
+            "gender":"M",
+            "birthDate":"2020-10-02",
+            "password":Password1
+        }
+
         event.preventDefault();
+        axios.post("http://localhost:8090/register",user).then(function (response) {
+            console.log("suppu")
+            console.log(response);
+            setSuccess(true)
+          })
         
         
     }
@@ -37,7 +51,7 @@ export default function Registration(){
        )}/>
        { (Password1!==Password2 &&Password2!=='') && <p>Password doesn't match</p>}
        <button type="submit" className="btn btn-primary" >Submit</button>
-       {success && <Redirect to="/"/>}
+       {success && <Redirect to="/login"/>}
      
     </form>
 </div>

@@ -3,54 +3,57 @@ import AddTweet from './AddTweet';
 import { Link } from 'react-router-dom';
 import DisplayTweet from './show tweets';
 import { distanceAndSkiddingToXY } from '@popperjs/core/lib/modifiers/offset';
-class Homepage extends React.Component {
-    render() { 
-        const a = [{
-            "username": "Aditya",
-            "tweet": [
-                {
-                    "tweet": "Updated tweet",
-                    "likes": 8,
-                    "replies": []
-                },
-                {
-                    "tweet": "Updated tweet",
-                    "likes": 0,
-                    "replies": []
-                }
-            ]
-        },
-        {
-            "username": "Santhosh",
-            "tweet": [
-                {
-                    "tweet": "Santhosh tweet",
-                    "likes": 5,
-                    "replies": null
-                },
-                {
-                    "tweet": "Updated tweet",
-                    "likes": 0,
-                    "replies": []
-                }
-            ]
-        }
-    
-    ]
-    
+import axios from 'axios';
+
+
+export default class HomePage extends React.Component{
+
+
+        constructor(props) {
+            super(props);
+            this.state = {
+              tweets: [],
+              change: true
+            };
+          }
+
+componentDidMount(){    
+    // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });
+    axios.get("http://localhost:8090/getAllTweets").then((res)=>{
+        this.setState({tweets:res.data})
+        // console.log(tweets)
+    })
+}
+componentDidUpdate(){    
+    // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });
+    axios.get("http://localhost:8090/getAllTweets").then((res)=>{
+        this.setState({tweets:res.data})
+        // console.log(tweets)
+    })
+}
+
+
+render(){
+    function changehappen(){
+        console.log("aditay")
+    }
 
         return (
             <React.Fragment>
-            <AddTweet />
-            {console.log(a)}
-            {a.map(({user})=>{
-                return <DisplayTweet kk={user}/>
+            <AddTweet changehappen={changehappen}/>
+            {/* {console.log(a)} */}
+            {/* {this.state.tweets.forEach((t)=>{
+                '<h1>efvwe</h1>'
+                //  <DisplayTweet tweet={t}/>
             })      }      
+             */}
+             {this.state.tweets.map(t=>(
+                 <DisplayTweet tweet={t}/>
+             ))}
             <Link to='/Registration'>Go to Aboutpage</Link>
             </React.Fragment>
         )
         
     }
+
 }
- 
-export default Homepage;

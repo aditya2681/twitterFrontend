@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as ReactBootstrap from 'react-bootstrap';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter, NavLink , Redirect} from 'react-router-dom';
 class Header extends React.Component {
 
     render() {
@@ -27,9 +27,9 @@ class Header extends React.Component {
                             className="me-auto my-2 my-lg-0"
                             style={{ maxHeight: '100px' }}
                             navbarScroll
-                        >
-                            <ReactBootstrap.Nav.Link >Register</ReactBootstrap.Nav.Link>
-                            <ReactBootstrap.Nav.Link href="#action2">Link</ReactBootstrap.Nav.Link>
+                        > 
+                               <NavLink to="/Registration">Register</NavLink>dbbbbbbbbbbbb
+                               <NavLink to="/Login">Login</NavLink>
                             <ReactBootstrap.NavDropdown title="Link" id="navbarScrollingDropdown">
                                 <ReactBootstrap.NavDropdown.Item href="#action3">Action</ReactBootstrap.NavDropdown.Item>
                                 <ReactBootstrap.NavDropdown.Item href="#action4">Another action</ReactBootstrap.NavDropdown.Item>

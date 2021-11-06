@@ -7,8 +7,9 @@ import Login from './Login';
 
 const Main = () => (
     <React.Fragment>
-    <Header/>
+    
     <BrowserRouter>
+        <Header/>
         <Switch>
             <Route path="/" component={Homepage} exact={true}/>
             <Route path="/Registration" component={Registration} exact/>
