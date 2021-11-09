@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import Modal from 'react-modal';
-import "./CommentModal.css";
+import "../../Extrs/CommentModal.css";
 import AddComment from './AddComment';
 import ViewComment from './ShowComments';
-import logo from './comments.jpg';
+import logo from '../../Extrs/comments.jpg';
 
 
  export default function CommentModal(props){ 

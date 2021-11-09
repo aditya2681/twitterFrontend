@@ -5,12 +5,11 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 import CommentModal from './CommentsModal';
 import { useDispatch,useSelector } from 'react-redux';
-import { expire } from './Actions/TokenAction';
-import logo from './logo.webp';
+
+import logo from '../../Extrs/logo.webp';
 
 
-import './showtweet.css'
-import AddTweet from './AddTweet';
+import '../../Extrs/showtweet.css'
 import axios from 'axios';
  function DisplayTweet(props){
      const dispatch = useDispatch();
@@ -31,7 +30,7 @@ import axios from 'axios';
     function doLike(){
         axios.put(`http://localhost:8090/liketweet/${props.tweet.id}`,like).then((response)=>{
             console.log(response)
-            dispatch(expire(response.data))
+        
             changetweet(response.data)
 
         })

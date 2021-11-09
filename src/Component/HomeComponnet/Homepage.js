@@ -1,7 +1,7 @@
 import React from 'react';
-import AddTweet from './AddTweet';
+import AddTweet from '../TweetsComponnet/AddTweet';
 import { Link } from 'react-router-dom';
-import DisplayTweet from './show tweets';
+import DisplayTweet from '../TweetsComponnet/show tweets';
 import { distanceAndSkiddingToXY } from '@popperjs/core/lib/modifiers/offset';
 import axios from 'axios';
 

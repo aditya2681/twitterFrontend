@@ -7,7 +7,7 @@ import CommentModal from './CommentsModal';
 
 
 
-import './showtweet.css'
+import '../../Extrs/showtweet.css'
  function ViewComment(props){
      console.log("in view component")
      console.log(props.tweet.replies)

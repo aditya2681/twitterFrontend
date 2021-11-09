@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
-import home from './base';
+import home from '../../base';
 import Homepage from './Homepage';
-import Registration from './Registration';
+import Registration from '../LoginComponnet/Registration';
 import Header from './Header';
-import Login from './Login';
-import './base.css'
-import ChangePassword from './ChangePasssword';
-import AllUsers from './AllUseres';
-import DisplayMyTweet  from './VIewMyTweets'
+import Login from '../LoginComponnet/Login';
+import '../../Extrs/base.css'
+import ChangePassword from '../LoginComponnet/ChangePasssword';
+import AllUsers from '../TweetsComponnet/AllUseres';
+import DisplayMyTweet  from '../TweetsComponnet/VIewMyTweets'
 
 const Main = () => (
     <React.Fragment className="imp">
@@ -26,6 +26,7 @@ const Main = () => (
             }
             <Route path="/getAllUsers" exact component={AllUsers} />
             <Route path="/getAllMyTweets" exact component={DisplayMyTweet} />
+            
             
         </Switch>
     </BrowserRouter>

@@ -1,11 +1,11 @@
 import React, { Component, useState } from 'react'
-import './addtweet.css'
+import '../../Extrs/addtweet.css'
 import axios from 'axios';
 
 import { Redirect } from 'react-router';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import { useDispatch, useSelector } from 'react-redux';
-import {expire} from '../src/Actions/TokenAction'
+import {expire} from '../../Actions/TokenAction'
 // import React, { Component } from 'react'
 
     export default function AddTweet(props){
@@ -30,6 +30,7 @@ import {expire} from '../src/Actions/TokenAction'
             console.log(response);
             setSuccess(true)
             props.changehappen(response.data)
+            changetweet('')
 
 
           })

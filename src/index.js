@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Header'
-import Homepage from './Homepage'
-import Main from './Main';
+import Main from './Component/HomeComponnet/Main';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {createStore} from 'redux';
 import allReducers from '../src/Reduccers/CombinedReducers'

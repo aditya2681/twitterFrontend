@@ -52,10 +52,8 @@ export default function Registration(){
 <div className="container main">
 <form onSubmit={registerMe}>
         <div className="row">
-            <div className="col-lg-6 leftChange">
-
-            </div>
-            <div className="col-lg-6 rightChange">
+           
+            <div className="col-lg-12 rightChange">
                 
            
 

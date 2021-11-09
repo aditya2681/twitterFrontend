@@ -2,7 +2,6 @@ import axios from 'axios';
 import React ,{useState}from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {expire} from '../src/Actions/TokenAction'
 // import axios from 'axios';
 
 
@@ -33,7 +32,6 @@ export default function Login(){
             console.log("suppu")
             console.log(response);
             
-            dispatch(expire(response.data.emailid))
             if(response.data.errormessage){
             
                 seterrorMessage(response.data.errormessage)

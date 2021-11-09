@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react'
-import './addtweet.css'
+import '../../Extrs/addtweet.css'
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
