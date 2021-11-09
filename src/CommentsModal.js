@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import "./CommentModal.css";
 import AddComment from './AddComment';
 import ViewComment from './ShowComments';
+import logo from './comments.jpg';
 
 
  export default function CommentModal(props){ 
@@ -33,12 +34,12 @@ import ViewComment from './ShowComments';
         <div className="row ">
 
             <div className="col-lg-4">
-                <h1>{r.emailId}</h1>
+                <h1><img className="thumbnail img-responsive" width="200" height="200" src={logo} /></h1>
             </div>
             <div className="col-lg-8">
                 <div className="row">
                     <div className="col-lg-8">
-                        <h1>{r.emailId}</h1>
+                        <h1>{r.emailId.substr(0,tweet.emailId.indexOf('@'))}</h1>
                     </div><div className="col-sm-4">
                         <p>Time</p>
                     </div>

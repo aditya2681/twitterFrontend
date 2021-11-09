@@ -12,9 +12,11 @@ export default class HomePage extends React.Component{
         constructor(props) {
             super(props);
             this.state = {
+                
               tweets: [],
               change: true
             };
+            this.changehappen = this.changehappen.bind(this)
           }
 
 componentDidMount(){    
@@ -24,23 +26,33 @@ componentDidMount(){
         // console.log(tweets)
     })
 }
+// componentDidUpdate(){    
+//     // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });
+//     axios.get("http://localhost:8090/getAllTweets").then((res)=>{
+//         this.setState({tweets:res.data})
+//         // console.log(tweets)
+//     })
+// }
 componentDidUpdate(){    
     // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });
-    axios.get("http://localhost:8090/getAllTweets").then((res)=>{
-        this.setState({tweets:res.data})
-        // console.log(tweets)
-    })
+    console.log("Updated")
+        console.log(this.state.tweets)
+    }
+
+ changehappen(tweet){
+    console.log(tweet)
+    console.log("qwert")
+    this.setState({tweets:tweet})
+    console.log(this.state.tweets)
 }
 
 
 render(){
-    function changehappen(){
-        console.log("aditay")
-    }
+    
 
         return (
             <React.Fragment>
-            <AddTweet changehappen={changehappen}/>
+            <AddTweet changehappen={this.changehappen}/>
             {/* {console.log(a)} */}
             {/* {this.state.tweets.forEach((t)=>{
                 '<h1>efvwe</h1>'

@@ -12,7 +12,7 @@ export default function Login(){
  
     const[emailId,setEmail]=useState('');
     const[Password1,setPassword1]=useState('');
-    const[error,seterror]=useState(false);
+    const[errorMessage,seterrorMessage]=useState(false);
     const[success,setSuccess]=useState(false);
     const dummy = useSelector(state=>state.tokenReducer)
     const dispatch = useDispatch();
@@ -34,31 +34,48 @@ export default function Login(){
             console.log(response);
             
             dispatch(expire(response.data.emailid))
+            if(response.data.errormessage){
+            
+                seterrorMessage(response.data.errormessage)
+            }
+            else{
 
             localStorage.setItem("emailId",response.data.emailid)
+            localStorage.setItem("isLoggedIn",true)
             setSuccess(true)
-          })
-        // axios.get('http://localhost:8090/users').then(function (response) {
-    // handle success
-    // console.log(response);
-//   })
-       
-        event.preventDefault();
-        
-        
+            }
+          })   
+        event.preventDefault(); 
     }
 
     return(
-<div>
-    ddsv{dummy}
-<form onSubmit={forSubmit}>
-  <input type="email" value={emailId} placeholder="Email ID" required={true} onChange={(event)=>setEmail(event.target.value)} />
-      <input type="text" value={Password1}placeholder="Password" required={true} onChange={(event)=>setPassword1(event.target.value)} />
+        <div className="container main">
+        <div className="row">
+            <div className="col-lg-6 leftChange">
 
-       <button type="submit" className="btn btn-primary" >Submit</button>
-       {success && <Redirect to="/"/>}
+            </div>
+            <div className="col-lg-6 rightChange">
+                
+            <form onSubmit={forSubmit}>
+                <label>{errorMessage && errorMessage}</label>
+                <div className="forms">
+            <input className="form-control" type="email" value={emailId} placeholder="Email ID" required={true} onChange={(event)=>setEmail(event.target.value)} />
+            </div>
+            <div className="forms">
+               <input type="text" className="form-control" value={Password1}placeholder="Password" required={true} onChange={(event)=>setPassword1(event.target.value)} />
+               </div>
+               <div className="forms">
+
+                <button type="submit" className="btn btn-primary" >Submit</button>
+                    </div>
+       {success && <Redirect to="/Dashboard"/>}
      
     </form>
-</div>
+                
+            </div>
+        </div>
+        
+    </div>
+
     );
 }

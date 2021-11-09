@@ -1,0 +1,36 @@
+.leftChange{
+    background-color: #3B8BEB;
+    
+}
+.rightChange{
+    background-color: #F78888;
+}
+
+.buttons{
+    padding:60px;
+}
+.button{
+    padding:25px;
+}
+.main{
+    margin-top: 150px;
+}
+body{
+    background-color: #E7E3D4;
+    
+}
+.forms{
+    padding:10px;
+}
+.changepassword{
+    color:white;
+    text-align:center;
+    margin-top: 50px;
+}
+.showusers{
+    margin-bottom:20px;
+    padding:10px;
+    margin-left: 5px;
+    background-color :lightcyan;
+    border-radius: 20px;
+}

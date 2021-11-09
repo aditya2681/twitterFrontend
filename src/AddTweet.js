@@ -29,7 +29,7 @@ import {expire} from '../src/Actions/TokenAction'
             dispatch(expire(response.data))
             console.log(response);
             setSuccess(true)
-            props.changehappen()
+            props.changehappen(response.data)
 
 
           })
@@ -38,7 +38,7 @@ import {expire} from '../src/Actions/TokenAction'
   
         return (
             <div className="container asd">
-                {success && <Redirect to="/"/>}
+               
                 <div className="row container">
 
                     <div className="col-lg-4">

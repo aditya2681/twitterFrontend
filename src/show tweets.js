@@ -6,6 +6,7 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 import CommentModal from './CommentsModal';
 import { useDispatch,useSelector } from 'react-redux';
 import { expire } from './Actions/TokenAction';
+import logo from './logo.webp';
 
 
 import './showtweet.css'
@@ -45,16 +46,16 @@ import axios from 'axios';
             setIsOpen(!isOpen);
         }
 
-        return <div className="container">
+        return <div className="container displaycontainer">
             <div className="row ">
 
                 <div className="col-lg-4">
-                    <h1>{tweet.emailId}</h1>
+                    <h1><img className="thumbnail img-responsive" width="200" height="200" src={logo} /></h1>
                 </div>
                 <div className="col-lg-8">
                     <div className="row">
                         <div className="col-lg-8">
-                            <h1>{localStorage.getItem("emailId")}</h1>
+                            <h1>{tweet.emailId.substr(0,tweet.emailId.indexOf('@'))}</h1>
                         </div><div className="col-sm-4">
                             <p>Time</p>
                         </div>
