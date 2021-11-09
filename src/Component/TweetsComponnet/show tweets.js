@@ -1,8 +1,9 @@
 import { useSSRSafeId } from '@react-aria/ssr';
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import CommentModal from './CommentsModal';
 import { useDispatch,useSelector } from 'react-redux';
 
@@ -15,6 +16,7 @@ import axios from 'axios';
      const dispatch = useDispatch();
 
     const [tweet, changetweet] =useState(props.tweet);
+    const [tweets, changetweets] =useState(props.tweet);
 
     console.log("In display component")
     console.log(props.tweet)
@@ -27,11 +29,20 @@ import axios from 'axios';
     const like={
         "like": localStorage.getItem("emailId")
     }
+  
     function doLike(){
         axios.put(`http://localhost:8090/liketweet/${props.tweet.id}`,like).then((response)=>{
             console.log(response)
         
             changetweet(response.data)
+
+        })
+    }
+    function deleteTweet(){
+        axios.delete(`http://localhost:8090/deleltetweet/${props.tweet.id}`).then((response)=>{
+            console.log(response)
+        
+            props.changehappen(response.data)
 
         })
     }
@@ -45,7 +56,7 @@ import axios from 'axios';
             setIsOpen(!isOpen);
         }
 
-        return <div className="container displaycontainer">
+        return  <div className="container displaycontainer">
             <div className="row ">
 
                 <div className="col-lg-4">
@@ -66,16 +77,23 @@ import axios from 'axios';
                             <div className="col-sm-2">
                                 <button className="btn btn-sm" onClick={doLike}><FontAwesomeIcon icon={faThumbsUp} />{tweet.likes.length}Like</button>
                             </div>
-                            <div className="col-sm-4">
+                          
+                            <div className="col-sm-2">
                                 <button className="btn btn-sm" onClick={showComments} ><FontAwesomeIcon icon={faComment} />Comments</button>
                             </div>
+                            {localStorage.getItem('emailId')===tweet.emailId &&
+                            <div className="col-sm-4">
+                                <button className="btn btn-sm" onClick={deleteTweet} ><FontAwesomeIcon icon={faTrashAlt} />Delete</button>
+                            </div>
+                                }
                         </div>
                     </div>
                 </div>
             </div>
             
-        </div>;
-    }
-
+        </div>
+    
+    
+                            }
 export default DisplayTweet;
 

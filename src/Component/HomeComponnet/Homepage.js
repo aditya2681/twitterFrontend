@@ -60,7 +60,7 @@ render(){
             })      }      
              */}
              {this.state.tweets.map(t=>(
-                 <DisplayTweet tweet={t}/>
+                 <DisplayTweet tweet={t} changehappen={this.changehappen}/>
              ))}
             <Link to='/Registration'>Go to Aboutpage</Link>
             </React.Fragment>
