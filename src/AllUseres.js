@@ -24,7 +24,7 @@ import axios from 'axios';
         changeusers(respoonse.data)
         console.log(users)
         })
-    })
+    },[])
 
 
         return <div className="container displaycontainer">

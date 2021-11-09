@@ -8,6 +8,7 @@ import Login from './Login';
 import './base.css'
 import ChangePassword from './ChangePasssword';
 import AllUsers from './AllUseres';
+import DisplayMyTweet  from './VIewMyTweets'
 
 const Main = () => (
     <React.Fragment className="imp">
@@ -24,6 +25,7 @@ const Main = () => (
             <Route path="/ChangePassword" exact component={ChangePassword} />
             }
             <Route path="/getAllUsers" exact component={AllUsers} />
+            <Route path="/getAllMyTweets" exact component={DisplayMyTweet} />
             
         </Switch>
     </BrowserRouter>

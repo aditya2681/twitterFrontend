@@ -31,6 +31,7 @@ class Header extends React.Component {
                                <NavLink to="/Registration">Register</NavLink>dbbbbbbbbbbbb
                                <NavLink to="/Login">Login</NavLink>dddd
                                <NavLink to="/getAllUsers">View Users</NavLink>dddd
+                               <NavLink to="/getAllMyTweets">My Tweets</NavLink>dddd
                                {/* <NavLink onClick={logout}>Logout</NavLink>scs */}
                                <NavLink to="/ChangePassword">Change Password</NavLink>dddd
                             <ReactBootstrap.NavDropdown title="Link" id="navbarScrollingDropdown">
