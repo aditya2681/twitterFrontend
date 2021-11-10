@@ -24,7 +24,8 @@ import {expire} from '../../Actions/TokenAction'
        console.log(tweet)
         const tweet1 = {
             "emailId": localStorage.getItem("emailId"),
-            "tweet":tweet
+            "tweet":tweet,
+            "tags":tags
             
         }
         
@@ -36,6 +37,8 @@ import {expire} from '../../Actions/TokenAction'
             setSuccess(true)
             props.changehappen(response.data)
             changetweet('')
+            setTags([])
+            
 
 
           })
@@ -79,7 +82,10 @@ const removetag=(tag)=>{
                                  <div className="col-sm-4">
                                   <select className = "form-control form-control-sm" value={tagstext} onChange={(event)=>{
                                         setTagsText(event.target.value)
-                                     }}>{
+                                     }}>
+                                         <option>Select</option> 
+                                         {
+                                        
                                          props.users.map( u=> 
                                         <option value={u.firstName}>{u.firstName}</option> )
                                         }

@@ -96,6 +96,12 @@ import axios from 'axios';
                             </div>
                                 }
                         </div>
+                        {/* {tweet.tags.map(t=>(<div>{t}</div>))} */}
+                        <div > Tags: 
+                                {tweet.tags.map(t=>(
+                                    <span className="tags">{t}</span>
+                                ))}
+                        </div>
                     </div>
                 </div>
             </div>

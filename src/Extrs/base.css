@@ -41,3 +41,9 @@ body{
     text-align: center;
     font-weight: bold;
 }
+.tags{
+    background-color:mistyrose;
+    padding:5px;
+    margin:2px;
+    border-radius: 15px;
+}
