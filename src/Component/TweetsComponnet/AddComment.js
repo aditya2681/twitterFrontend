@@ -32,7 +32,7 @@ export default function AddComment (props){
                 <div className="row container">
 
                     <div className="col-lg-4">
-                        <h1>Username</h1>
+                        <h1><h1>{localStorage.getItem("emailId").substr(0,localStorage.getItem("emailId").indexOf('@'))}</h1></h1>
                     </div>
                     <div className="col-lg-8">
                         <form onSubmit={forSubmit}>

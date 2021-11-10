@@ -2,7 +2,6 @@ import React from 'react';
 import AddTweet from '../TweetsComponnet/AddTweet';
 import { Link } from 'react-router-dom';
 import DisplayTweet from '../TweetsComponnet/show tweets';
-import { distanceAndSkiddingToXY } from '@popperjs/core/lib/modifiers/offset';
 import axios from 'axios';
 
 
@@ -14,6 +13,7 @@ export default class HomePage extends React.Component{
             this.state = {
                 
               tweets: [],
+              users:[],
               change: true
             };
             this.changehappen = this.changehappen.bind(this)
@@ -25,6 +25,11 @@ componentDidMount(){
         this.setState({tweets:res.data})
         // console.log(tweets)
     })
+    axios.get("http://localhost:8090/getAllUsers").then((respoonse)=>{
+            console.log(respoonse.data)
+        this.setState({users:respoonse.data})
+        console.log(this.state.users)
+        })
 }
 // componentDidUpdate(){    
 //     // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });
@@ -52,13 +57,11 @@ render(){
 
         return (
             <React.Fragment>
-            <AddTweet changehappen={this.changehappen}/>
-            {/* {console.log(a)} */}
-            {/* {this.state.tweets.forEach((t)=>{
-                '<h1>efvwe</h1>'
-                //  <DisplayTweet tweet={t}/>
-            })      }      
-             */}
+            <AddTweet changehappen={this.changehappen} users={this.state.users}/>
+             {this.state.tweets.length===0 && 
+        <div className=" container notweetes leftChange">
+                No Tweets to Display
+             </div>}
              {this.state.tweets.map(t=>(
                  <DisplayTweet tweet={t} changehappen={this.changehappen}/>
              ))}

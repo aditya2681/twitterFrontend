@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React ,{useState}from 'react';
 import { Redirect } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-// import axios from 'axios';
+
 
 
 export default function Login(){
@@ -13,13 +12,12 @@ export default function Login(){
     const[Password1,setPassword1]=useState('');
     const[errorMessage,seterrorMessage]=useState(false);
     const[success,setSuccess]=useState(false);
-    const dummy = useSelector(state=>state.tokenReducer)
-    const dispatch = useDispatch();
+    
+    
 
 
     const forSubmit=(event)=>{
         
-        console.log(dummy)
         console.log(emailId)
         
         const LoginCredential = {

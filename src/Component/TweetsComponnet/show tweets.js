@@ -64,10 +64,19 @@ import axios from 'axios';
                 </div>
                 <div className="col-lg-8">
                     <div className="row">
-                        <div className="col-lg-8">
+                        <div className="col-lg-6">
                             <h1>{tweet.emailId.substr(0,tweet.emailId.indexOf('@'))}</h1>
-                        </div><div className="col-sm-4">
-                            <p>Time</p>
+                        </div><div className="col-sm-6">
+                            <div className="row">
+                                <div className="col"> 
+                                <p>Date: {tweet.date}</p>
+                                </div>
+                                <div className="col">
+                                <p>Time: {tweet.time}</p>
+                                </div>
+                            </div>
+                            
+                            
                         </div>
                     </div>
                     <div className="tweetprint">

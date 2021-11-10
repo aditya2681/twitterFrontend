@@ -15,11 +15,12 @@ import logo from '../../Extrs/comments.jpg';
           }
     
         return(
-            <Modal
+            <Modal  
             isOpen={props.show}
             
             contentLabel="SelectedOption"
             onRequestClose={props.close}
+            
             >
                 {console.log("in commentModal component")}
                 {console.log(props.comments)}
