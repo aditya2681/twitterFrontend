@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React ,{useState}from 'react';
+import { propTypes } from 'react-bootstrap/esm/Image';
 import { Redirect } from 'react-router-dom';
 
 
 
-export default function Login(){
+export default function Login(props){
 
 
  
@@ -27,7 +28,6 @@ export default function Login(){
         const jsonObject = JSON.stringify(LoginCredential);
         console.log(jsonObject);
         axios.post("http://localhost:8090/authenticate",LoginCredential).then(function (response) {
-            console.log("suppu")
             console.log(response);
             
             if(response.data.errormessage){
@@ -39,6 +39,7 @@ export default function Login(){
             localStorage.setItem("emailId",response.data.emailid)
             localStorage.setItem("isLoggedIn",true)
             setSuccess(true)
+            props.loginx()
             }
           })   
         event.preventDefault(); 

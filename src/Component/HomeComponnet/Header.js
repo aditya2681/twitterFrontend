@@ -1,66 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as ReactBootstrap from 'react-bootstrap';
 import { BrowserRouter, NavLink , Redirect} from 'react-router-dom';
-class Header extends React.Component {
-
-    render() {
-        // const options = [
-        //     {name: 'Swedish', value: 'sv'},
-        //     {name: 'English', value: 'en'},
-        //     {
-        //         type: 'group',
-        //         name: 'Group name',
-        //         items: [
-        //             {name: 'Spanish', value: 'es'},
-        // //         ]
-        //     },
-        // ];
-        return <div>
+export default function Header (props){
+    const [isLoggedin,changeloggedin]=useState(props.loginfo)
+return(
+         <div>
             
-            <ReactBootstrap.Navbar bg="light" expand="lg">
-                <ReactBootstrap.Container fluid>
-                    <ReactBootstrap.Navbar.Brand href="#">Twitter</ReactBootstrap.Navbar.Brand>
-                    <ReactBootstrap.Navbar.Toggle aria-controls="navbarScroll" />
-                    <ReactBootstrap.Navbar.Collapse id="navbarScroll">
-                        <ReactBootstrap.Nav
-                            className="me-auto my-2 my-lg-0"
-                            style={{ maxHeight: '100px' }}
-                            navbarScroll
-                        > 
-                               <NavLink to="/Registration">Register</NavLink>dbbbbbbbbbbbb
-                               <NavLink to="/Login">Login</NavLink>dddd
-                               <NavLink to="/getAllUsers">View Users</NavLink>dddd
-                               <NavLink to="/getAllMyTweets">My Tweets</NavLink>dddd
-                               {/* <NavLink onClick={logout}>Logout</NavLink>scs */}
-                               <NavLink to="/ChangePassword">Change Password</NavLink>dddd
-                            <ReactBootstrap.NavDropdown title="Link" id="navbarScrollingDropdown">
-                                <ReactBootstrap.NavDropdown.Item href="#action3">Action</ReactBootstrap.NavDropdown.Item>
-                                <ReactBootstrap.NavDropdown.Item href="#action4">Another action</ReactBootstrap.NavDropdown.Item>
-                                <ReactBootstrap.NavDropdown.Divider />
-                                <ReactBootstrap.NavDropdown.Item href="#action5">
-                                    Something else here
-                                </ReactBootstrap.NavDropdown.Item>
-                            </ReactBootstrap.NavDropdown>
-                            <ReactBootstrap.Nav.Link href="#" disabled>
-                                Link
-                            </ReactBootstrap.Nav.Link>
-                        </ReactBootstrap.Nav>
-                        <ReactBootstrap.Form className="d-flex">
-                            <ReactBootstrap.FormControl
-                                type="seReactBootstraparch"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <ReactBootstrap.Button variant="outline-success">Search</ReactBootstrap.Button>
-                        </ReactBootstrap.Form>
-                    </ReactBootstrap.Navbar.Collapse>
-                </ReactBootstrap.Container>
-            </ReactBootstrap.Navbar>
-
-        </div>;
+            {console.log(props)}
+                    
+<div>
+                            <ul class="nav justify-content-center">
+                <li className="nav-item">
+                <NavLink className="nav-link" to="/Registration">Register</NavLink>
+                </li>
+                <li className="nav-item">
+                <NavLink to="/Login" className="nav-link">Login</NavLink>
+                </li>
+                <li className="nav-item">
+                <NavLink to="/getAllUsers" className="nav-link">View Users</NavLink>
+                </li>
+                <li className="nav-item">
+                <NavLink to="/getAllMyTweets" className="nav-link">My Tweets</NavLink>
+                </li>
+              
+               
+                <li className="nav-item">
+                <NavLink className="nav-link" to="/ChangePassword">Change Password</NavLink>
+                </li>
+                </ul>
+                <ul class="nav justify-content-end">
+                <li className="nav-item">
+                <NavLink to ="/Login" className="nav-link" onClick={props.logout}>Logout</NavLink> 
+                </li>
+                    </ul>
+                </div>
+                
+        </div>
+)
     }
-}
 
-export default Header;

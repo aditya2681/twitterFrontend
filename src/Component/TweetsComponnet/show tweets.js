@@ -3,7 +3,7 @@ import React, { useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import CommentModal from './CommentsModal';
 import { useDispatch,useSelector } from 'react-redux';
 
@@ -12,11 +12,14 @@ import logo from '../../Extrs/logo.webp';
 
 import '../../Extrs/showtweet.css'
 import axios from 'axios';
+import { event } from 'jquery';
  function DisplayTweet(props){
      const dispatch = useDispatch();
 
     const [tweet, changetweet] =useState(props.tweet);
     const [tweets, changetweets] =useState(props.tweet);
+    const [edit,toggleEdit] = useState(false);
+    const [tweetedit,edittweettext] =useState(props.tweet.tweet);
 
     console.log("In display component")
     console.log(props.tweet)
@@ -45,6 +48,24 @@ import axios from 'axios';
             props.changehappen(response.data)
 
         })
+    }
+    function editTweet(){
+        toggleEdit(true)
+       
+    }
+
+    function updateTweet(){
+        const tweet={
+            "tweet": tweetedit,
+            "emailId":localStorage.getItem('emailId')
+        }
+        axios.put(`http://localhost:8090/updatetweet/${props.tweet.id}`,tweet).then((response)=>{
+            console.log(response)
+            toggleEdit(false)
+            props.changehappen(response.data)
+
+        })
+
     }
     function closeComments(isOpen){
         setIsOpen(false);
@@ -81,6 +102,16 @@ import axios from 'axios';
                     </div>
                     <div className="tweetprint">
                         {props.tweet.tweet}
+                        {edit &&
+                        <div> 
+                        <input type="text" value ={ tweetedit}
+                            onChange={(event)=>{
+                                edittweettext(event.target.value)
+                               
+                             }
+                            }/>
+                            <button onClick={updateTweet}>UpdateTweet</button>
+                            </div>}
                         <CommentModal show={isOpen} close={closeComments} comments={tweet}/>
                         <div className="row">
                             <div className="col-sm-2">
@@ -94,6 +125,13 @@ import axios from 'axios';
                             <div className="col-sm-4">
                                 <button className="btn btn-sm" onClick={deleteTweet} ><FontAwesomeIcon icon={faTrashAlt} />Delete</button>
                             </div>
+                            
+                                }
+                             {localStorage.getItem('emailId')===tweet.emailId &&
+                            <div className="col-sm-4">
+                                <button className="btn btn-sm" onClick={editTweet} ><FontAwesomeIcon icon={faPencilAlt} />Edit</button>
+                            </div>
+                            
                                 }
                         </div>
                         {/* {tweet.tags.map(t=>(<div>{t}</div>))} */}

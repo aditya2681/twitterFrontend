@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import home from '../../base';
 import Homepage from './Homepage';
@@ -9,28 +9,42 @@ import '../../Extrs/base.css'
 import ChangePassword from '../LoginComponnet/ChangePasssword';
 import AllUsers from '../TweetsComponnet/AllUseres';
 import DisplayMyTweet  from '../TweetsComponnet/VIewMyTweets'
+import ErrorPage from './ErrorPage';
 
-const Main = () => (
+
+
+function Main () {
+    function handlelogout(){
+        isLogged(false)
+    }
+    function loginx(){
+        isLogged(true)
+    }
+    const [loggedin,isLogged] = useState(false);
+    return(
     <React.Fragment className="imp">
     
     <BrowserRouter>
-        <Header/>
+    {console.log("in main")}
+    {console.log(loggedin)}
+    <Header loginfo={loggedin} logout={handlelogout}/>
         <Switch>
-            <Route path="/" component={home} exact={true}/>
+            {loggedin && <Route path="/" component={home} exact={true}/>}
             <Route path="/Registration" component={Registration} exact/>
-            <Route path="/Login" component={Login} />
-            {localStorage.getItem("isLoggedIn") &&
- <Route path="/Dashboard" component={Homepage} />}
-            {localStorage.getItem("isLoggedIn") &&
+           <Route path="/Login" component={()=><Login loginx={loginx}/> } />
+            {loggedin && 
+             <Route path="/Dashboard" component={Homepage} />}
+             {loggedin && 
             <Route path="/ChangePassword" exact component={ChangePassword} />
             }
-            <Route path="/getAllUsers" exact component={AllUsers} />
-            <Route path="/getAllMyTweets" exact component={DisplayMyTweet} />
+            {loggedin && <Route path="/getAllUsers" exact component={AllUsers} />}
+           {loggedin &&  <Route path="/getAllMyTweets" exact component={DisplayMyTweet} />}
+           <Route   component={ErrorPage} />
             
             
         </Switch>
     </BrowserRouter>
     </React.Fragment>
-)
+)}
 
 export default Main;
