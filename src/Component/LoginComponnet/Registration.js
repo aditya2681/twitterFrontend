@@ -1,5 +1,5 @@
 import React ,{useState}from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -38,7 +38,8 @@ export default function Registration(){
                 seterrorMessage(response.data.errormesssage)
             }
             else{
-            setSuccess(true)
+            setSuccess(true);
+            // <Link to="/Login"/>
             }
           })
         }
@@ -109,7 +110,7 @@ export default function Registration(){
        { (Password1!==Password2 &&Password2!=='') && <p>Password doesn't match</p>}
       
        </div>
-       {success && <Redirect to="/"/>}
+       {success && <Redirect to="/Login"/>}
      
    
                 
